@@ -1,0 +1,37 @@
+{
+    "name": "php-solution/file-thumb-bundle",
+    "type": "library",
+    "description": "This bundle provides an integration of the file thumb functionality",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Oleksandr Savchenko",
+            "email": "olsav@ciklum.com"
+        },
+        {
+            "name": "Nikita Kalinin",
+            "email": "kalinick@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.0",
+        "imagine/imagine": "^0.7",
+        "php-solution/file-storage-bundle": "^0.1",
+        "symfony/config": "^3.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit" : "~4.0||~5.0||~6.0"
+    },
+    "suggest": {
+    },
+    "autoload":     {
+        "psr-4": { "PhpSolution\\FileThumbBundle\\": "src/" }
+    },
+    "autoload-dev": {
+        "psr-4": { "Tests\\": "tests/" }
+    },
+    "minimum-stability": "stable",
+    "scripts": {
+        "test": "phpunit"
+    }
+}

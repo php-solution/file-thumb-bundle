@@ -1,0 +1,22 @@
+services:
+    # EventSubscriber
+    file_thumb.event_subscriber.thumb_file_event:
+        class: 'PhpSolution\FileThumbBundle\EventSubscriber\ThumbFileEventSubscriber'
+        arguments:
+            - "@file_storage.lib.storage_provider"
+            - "@file_thumb.lib.generator.generator_provider"
+        tags:
+            - { name: 'file_storage.event_subscriber', priority: 5 }
+
+    # Lib
+    ## Generator
+    file_thumb.lib.generator.generator_provider:
+        public: false
+        class: 'PhpSolution\FileThumbBundle\Lib\Generator\GeneratorProvider'
+        arguments: ["@file_storage.lib.mime_type_analyzer"]
+
+    file_thumb.lib.generator.image_generator:
+        public: false
+        class: 'PhpSolution\FileThumbBundle\Lib\Generator\ImageGenerator'
+        tags:
+            - { name: 'thumb.generator', alias: 'image' }
