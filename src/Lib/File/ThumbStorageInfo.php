@@ -52,7 +52,13 @@ class ThumbStorageInfo implements StorageInfoInterface
      */
     public function getStoragePath(): string
     {
-        return $this->original->getStoragePath() . ThumbedInterface::THUMB_SUFFIX . $this->key;
+        $originalStoragePath = $this->original->getStoragePath();
+        $pathInfo = pathinfo($originalStoragePath);
+
+        return $pathInfo['filename']
+            . ThumbedInterface::THUMB_SUFFIX
+            . $this->key
+            . (array_key_exists('extension', $pathInfo) ? '.' . $pathInfo['extension'] : '');
     }
 
     /**
